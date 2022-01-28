@@ -52,14 +52,6 @@ export default {
       let nbCook = 100;
       recipe.contenu.forEach((recipeItem) => {
         let search = liste.filter((listItem) => {
-          if (listItem.ingredient.name == "oil") {
-            console.log("searching for ");
-            console.log(listItem.ingredient.name);
-            console.log("check ==========================");
-            console.log(listItem.id + " =? " + recipeItem.id + " => ");
-            console.log(Number(listItem.id) == Number(recipeItem.id));
-            console.log(listItem.qty + ">=" + recipeItem.qty);
-          }
           if (listItem.id == recipeItem.id && listItem.qty >= recipeItem.qty) {
             if (listItem.qty / recipeItem.qty < nbCook) {
               nbCook = Math.floor(listItem.qty / recipeItem.qty);
@@ -76,10 +68,6 @@ export default {
       });
       recipe.nombre = nbCook;
       recipe.missing = missingIngredients;
-      console.log("can we bake " + recipe.name + " ? ");
-      console.log(missingIngredients.length == 0);
-      console.log("nombre de fois ? " + nbCook);
-      console.log(missingIngredients);
     },
   },
   mounted() {
@@ -91,7 +79,7 @@ export default {
 
     //Liste des recettes :
     this.recipeList = dataService.getRecipes();
-    console.log("lets cook ******************************************");
+    
     //Test des recettes possible
     this.recipeList.forEach((recipe) => {
       this.cakes(this.liste, recipe);

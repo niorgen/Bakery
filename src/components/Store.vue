@@ -43,14 +43,11 @@ export default {
   },
   methods: {
     buyFood(){
-      console.log('buying food')
-      console.log(this.liste)
       dataService.setListe(this.liste)
     }
   },
   mounted() {
     this.liste = dataService.getListeIngredients()
-    console.log('Store Mounted !')
   },
 };
 </script>
